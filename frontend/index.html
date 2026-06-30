@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manhwa Vision - AI Speech Bubble Remover</title>
+    <meta name="description" content="Instantly remove text and speech bubbles from Manhwa and Webtoons using advanced AI segmentation.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-mesh"></div>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <h2 class="gradient-text logo">Manhwa Tools</h2>
+            <nav class="tool-nav">
+                <a href="#" class="tool-link active">
+                    <span class="icon">✨</span> Text Eraser
+                </a>
+                <a href="#" class="tool-link upcoming">
+                    <span class="icon">🔍</span> Text Upscaler (Soon)
+                </a>
+                <a href="#" class="tool-link upcoming">
+                    <span class="icon">🌍</span> Auto Translator (Soon)
+                </a>
+            </nav>
+        </aside>
+
+        <main class="app-container">
+            <header>
+                <h1>Text Eraser</h1>
+                <p>Pixel-Perfect AI Text Removal</p>
+            </header>
+
+            <section class="upload-section" id="drop-zone">
+                <div class="upload-box">
+                    <div class="upload-icon">
+                        <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                    </div>
+                    <h3>Drag & Drop Manhwa Page</h3>
+                    <p>or <label for="file-input" class="browse-link">browse</label> to choose a file</p>
+                    <input type="file" id="file-input" accept="image/png, image/jpeg, image/jpg" hidden>
+                </div>
+                
+                <div class="loading-state hidden" id="loading-state">
+                    <div class="spinner"></div>
+                    <p>YOLO ONNX Segmenting Bubbles...</p>
+                </div>
+            </section>
+
+            <section class="results-section hidden" id="results-section">
+                <div class="image-comparison">
+                    <div class="image-wrapper">
+                        <h4>Original</h4>
+                        <img id="original-image" src="" alt="Original Manhwa">
+                    </div>
+                    <div class="image-wrapper">
+                        <h4>Cleaned</h4>
+                        <img id="cleaned-image" src="" alt="Cleaned Manhwa">
+                        <a id="download-btn" class="btn primary-btn" download="cleaned_manhwa.jpg">
+                            Download Image
+                        </a>
+                    </div>
+                </div>
+                <button id="reset-btn" class="btn outline-btn mt-4">Process Another Image</button>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
