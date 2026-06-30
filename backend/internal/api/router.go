@@ -22,10 +22,10 @@ func SetupRouter(modelPath string) *gin.Engine {
 	
 	// Register Tools
 	tools.RegisterEraserTool(apiGroup, modelPath)
+	tools.RegisterTranslatorTool(apiGroup, modelPath)
 	
 	// In the future, just add:
 	// tools.RegisterUpscalerTool(apiGroup)
-	// tools.RegisterTranslatorTool(apiGroup)
 
 	return r
 }

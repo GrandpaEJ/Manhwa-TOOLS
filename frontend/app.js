@@ -8,6 +8,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const downloadBtn = document.getElementById('download-btn');
     const resetBtn = document.getElementById('reset-btn');
 
+    const toolErase = document.getElementById('tool-erase');
+    const toolTranslate = document.getElementById('tool-translate');
+    
+    let currentEndpoint = '/api/clean';
+
+    // Tool Selection Logic
+    toolErase.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentEndpoint = '/api/clean';
+        toolErase.classList.add('active');
+        toolTranslate.classList.remove('active');
+        document.querySelector('header h1').innerText = 'Text Eraser';
+        document.querySelector('header p').innerText = 'Pixel-Perfect AI Text Removal';
+        document.querySelector('#loading-state p').innerText = 'YOLO ONNX Segmenting Bubbles...';
+    });
+
+    toolTranslate.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentEndpoint = '/api/translate';
+        toolTranslate.classList.add('active');
+        toolErase.classList.remove('active');
+        document.querySelector('header h1').innerText = 'Auto Translator';
+        document.querySelector('header p').innerText = 'AI Bangla Translation Rendering Test';
+        document.querySelector('#loading-state p').innerText = 'Translating & Rendering Bangla Text...';
+    });
+
     // Drag and Drop Events
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
         dropZone.addEventListener(eventName, preventDefaults, false);
@@ -69,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('image', file);
 
         try {
-            const response = await fetch('/api/clean', {
+            const response = await fetch(currentEndpoint, {
                 method: 'POST',
                 body: formData
             });
