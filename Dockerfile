@@ -1,5 +1,5 @@
 # Stage 1: Build the Go application
-FROM golang:1.22-bookworm AS builder
+FROM golang:1.26.3-bookworm AS builder
 WORKDIR /app/backend
 
 # Download Go modules
